@@ -9,12 +9,9 @@ class Registration extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'formation_id'];
+    protected $fillable = ['nom','email', 'formation_id'];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+    public $timestamps = false;
 
     public function formation()
     {

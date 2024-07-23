@@ -4,16 +4,17 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
-use App\Models\Registration; // Assurez-vous que ce modèle existe
+use App\Models\Registration; 
 use Illuminate\Support\Facades\Validator;
 
 class RegistrationController extends Controller
 {
     public function store(Request $request)
     {
-        // Valider les données
+   
         $validator = Validator::make($request->all(), [
-            'user_id' => 'required|exists:users,id',
+            'nom' => 'required|:nom',
+            'email' => 'required|:email',
             'formation_id' => 'required|exists:formations,id',
         ]);
 
@@ -21,9 +22,10 @@ class RegistrationController extends Controller
             return response()->json(['errors' => $validator->errors()], 400);
         }
 
-        // Créer une nouvelle inscription
+       
         $registration = Registration::create([
-            'user_id' => $request->input('user_id'),
+            'nom' => $request->input('nom'),
+            'email' => $request->input('email'),
             'formation_id' => $request->input('formation_id'),
         ]);
 

@@ -25,8 +25,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::post('api/test', [RegistrationController::class, 'store']);
-// Définir les routes API ici
-Route::get('api/formations', [FormationController::class, 'index']);
+ Route::get('api/formations', [FormationController::class, 'index']);
 
 
 require __DIR__.'/auth.php';
